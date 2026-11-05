@@ -2,90 +2,29 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-                           https://www.springframework.org/schema/beans/spring-beans.xsd">
+       https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!-- ======================================================== -->
-    <!-- 1. OBJECT DEPENDENCIES: ADDIS ABABA ADDRESS BEANS         -->
-    <!-- ======================================================== -->
-    <bean id="boleAddress" class="com.craft.Address">
-        <property name="city" value="Bole, Addis Ababa"/>
-        <property name="country" value="Ethiopia"/>
+    <bean id="math" class="com.craft.Subject">
+        <property name="subjectName" value="EAD"/>
     </bean>
-
-    <bean id="aratKiloAddress" class="com.craft.Address">
-        <property name="city" value="Arat Kilo, Addis Ababa"/>
-        <property name="country" value="Ethiopia"/>
+    <bean id="address" class="com.craft.Address">
+        <property name="city" value="NewYork"/>
+        <property name="country" value="USA"/>
     </bean>
-
-    <!-- ======================================================== -->
-    <!-- 2. COLLECTION ITEMS: SOFTWARE ENGINEERING COURSES        -->
-    <!-- ======================================================== -->
-    <bean id="enterpriseJava" class="com.craft.Subject">
-        <property name="subjectName" value="Enterprise Java &amp; Spring Framework"/>
+    <bean id="Java" class="com.craft.Subject">
+        <property name="subjectName" value="EAD"/>
     </bean>
-
-    <bean id="databaseSystems" class="com.craft.Subject">
-        <property name="subjectName" value="Database Systems &amp; Management"/>
-    </bean>
-
-    <bean id="softwareArchitecture" class="com.craft.Subject">
-        <property name="subjectName" value="Software Architecture &amp; Design"/>
-    </bean>
-
-    <bean id="webEngineering" class="com.craft.Subject">
-        <property name="subjectName" value="Web Application Engineering"/>
-    </bean>
-
-    <!-- ======================================================== -->
-    <!-- 3. SETTER INJECTION DEMONSTRATION                         -->
-    <!-- Injects literals, Addis Ababa address, and SE courses     -->
-    <!-- ======================================================== -->
-    <bean id="setterStudent" class="com.craft.Student">
+    <bean id="student" class="com.craft.Student">
         <property name="id" value="101"/>
-        <property name="name" value="Yohannes Haile"/>
-        <property name="age" value="22"/>
-        <property name="address" ref="boleAddress"/>
+        <property name="name" value="Edlawit Sewasew"/>
+        <property name="age" value="20"/>
+        <property name="address" ref="address"/>
         <property name="subjects">
             <list>
-                <ref bean="enterpriseJava"/>
-                <ref bean="databaseSystems"/>
+                <ref bean="math"/>
+                <ref bean="Java"/>
             </list>
         </property>
-    </bean>
-
-    <!-- ======================================================== -->
-    <!-- 4. CONSTRUCTOR INJECTION DEMONSTRATION                    -->
-    <!-- Injects literals, Arat Kilo address, and courses by index -->
-    <!-- ======================================================== -->
-    <bean id="constructorStudent" class="com.craft.Student">
-        <constructor-arg index="0" value="102"/>
-        <constructor-arg index="1" value="Selamawit Tadesse"/>
-        <constructor-arg index="2" value="21"/>
-        <constructor-arg index="3" ref="aratKiloAddress"/>
-        <constructor-arg index="4">
-            <list>
-                <ref bean="softwareArchitecture"/>
-                <ref bean="webEngineering"/>
-            </list>
-        </constructor-arg>
-    </bean>
-
-    <!-- ======================================================== -->
-    <!-- 5. BEAN SCOPES DEMONSTRATION                              -->
-    <!-- ======================================================== -->
-
-    <!-- Singleton Scope: Shared single instance across the context -->
-    <bean id="singletonStudent" class="com.craft.Student" scope="singleton">
-        <property name="id" value="301"/>
-        <property name="name" value="Dawit Alemu"/>
-        <property name="age" value="23"/>
-    </bean>
-
-    <!-- Prototype Scope: Distinct independent instance per getBean() -->
-    <bean id="prototypeStudent" class="com.craft.Student" scope="prototype">
-        <property name="id" value="401"/>
-        <property name="name" value="Bethlehem Girma"/>
-        <property name="age" value="20"/>
     </bean>
 
 </beans>
